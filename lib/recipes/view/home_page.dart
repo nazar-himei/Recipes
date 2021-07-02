@@ -15,8 +15,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Recipes'),
-        actions: [Icon(Icons.search)],
+        title:const  Text('My Recipes'),
+        actions:const  [Icon(Icons.search)],
       ),
       body: BlocProvider(
         create: (_) => RecipesBloc()..add(RecipesFetched()),
@@ -24,13 +24,15 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             switch (state.status) {
               case RecipesStatus.failure:
-                return Center(
-                  child: Text('failed to fetch'),
+                return const Center(
+                  child:  Text('failed to fetch'),
                 );
               case RecipesStatus.success:
                 return ListView.builder(
                   itemCount: state.posts.length,
                   itemBuilder: (context, i) {
+                          state.posts.sort((a, b) => a.id.compareTo(b.id));
+
                     return Recipes_List(recipes: state.posts[i]);
                   },
                 );

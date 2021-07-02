@@ -10,14 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: Size(360, 690),
+        designSize: const Size(360, 690),
         builder: () => MaterialApp(
               title: 'My Recipes',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.deepPurple,
               ),
-              home: HomePage(),
+              home:const HomePage(),
             ));
   }
 }

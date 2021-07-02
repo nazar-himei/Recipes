@@ -12,7 +12,7 @@ part 'recipes_event.dart';
 part 'recipes_state.dart';
 
 class RecipesBloc extends Bloc<RecipesEvent, RecipesState> {
-  RecipesBloc() : super(RecipesState());
+  RecipesBloc() : super(const RecipesState());
 
   @override
   Stream<RecipesState> mapEventToState(
@@ -55,7 +55,6 @@ class RecipesBloc extends Bloc<RecipesEvent, RecipesState> {
     );
     if (response.statusCode == 200) {
       final body = json.decode(response.body) as List;
-      body.sort((a, b) => a['id'].compareTo(b['id']));
       return body.map((dynamic json) {
         return Recipes(
           id: json['id'] as int,
